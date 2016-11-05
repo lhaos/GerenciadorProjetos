@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class Gerenciador {
 	
+	Cadastros cad = new Cadastros();
+	
 	FuncionariosParser pFunc = new FuncionariosParser();
 	CompetenciasParcer pComp = new CompetenciasParcer();
 	ColaboradoresParser pCol = new ColaboradoresParser();
@@ -34,11 +36,7 @@ public class Gerenciador {
 		importarArquivo("src/arquivos/projetos.csv", proj, pProj, vProj);
 		importarArquivo("src/arquivos/competencias.csv", comp, pComp, vComp);
 		importarArquivo("src/arquivos/colaboradores.csv", col, pCol, vCol);
-		//testaFuncionarios();
-		//testaColaboradores();
-		//testaCompetencias();
-		//testaProjetos();
-		/*
+		
 		Menu menu = new Menu();
 		
 		Opcao verFunc = new Opcao("Ver Funcionarios");
@@ -64,84 +62,37 @@ public class Gerenciador {
 		switch (menu.getOption()) {
 			case 1:
 					System.out.println("\nRelação de Funcionários:\n");
-					VetorFuncionarios.getVetor();
+					vFunc.getVetor();
 				break;
 			case 2:
 					System.out.println("\nRelação de Projetos:\n");
-					VetorProjetos.getVetor();
+					vProj.getVetor();
 				break;
 			case 3:
 					System.out.println("\nRelação de Competencias:\n");
-					VetorCompetencias.getVetor();
+					vComp.getVetor();
 				break;
 			case 4:
 					System.out.println("\nRelação de Colaboradores:\n");
-					VetorColaboradores.getVetor();
+					vCol.getVetor();
 				break;
 			case 5:
-					VetorFuncionarios.remove(Integer.parseInt(digita("Digite um indice do funcionario "
-						+ "que deseja remover")));
+					//VetorFuncionarios.remove(Integer.parseInt(digita("Digite um indice do funcionario "
+						//+ "que deseja remover")));
 				break;
 			case 6:
-				VetorProjetos.remove(Integer.parseInt(digita("Digite um indice do projeto "
-					+ "que deseja remover")));
+				//vetorProjetos.remove(Integer.parseInt(digita("Digite um indice do projeto "
+					//+ "que deseja remover")));
 			break;
 			case 7:
-				 cadastraFuncionario();
+				 vProj.append(cad.cadastroProj(vComp));
 			break;	
 			default:
 				System.exit(0);
 			}//fecha switch
-		} while (true);*/
+		} while (true);
 		
-	}//fecha run
-
-	private void testaProjetos() throws FileNotFoundException {
-		Parser<Projeto> parser = new ProjetoParser();
-		LeitorCSV<Projeto> leitor = new LeitorCSV<>("src/arquivos/projetos.csv", parser);
-		leitor.skipLine();
-		while(leitor.hasNext()){
-			Projeto projeto = leitor.readObject();
-			System.out.println(projeto);
-		}
-		leitor.close();
-		
-	}//close project tester
-	
-	
-
-	private void testaFuncionarios() throws FileNotFoundException {
-		Parser<Funcionario> parser = new FuncionariosParser();
-		LeitorCSV<Funcionario> leitor = new LeitorCSV<>("src/arquivos/funcionarios.csv", parser);
-		leitor.skipLine();
-		while(leitor.hasNext()){
-			Funcionario funcionario = leitor.readObject();
-			System.out.println(funcionario);
-		}
-		leitor.close();
-	}//close funcionarios tester
-	
-	private void testaCompetencias() throws FileNotFoundException {
-		Parser<Competencias> parser = new CompetenciasParcer();
-		LeitorCSV<Competencias> leitor = new LeitorCSV<>("src/arquivos/competencias.csv", parser);
-		leitor.skipLine();
-		while(leitor.hasNext()){
-			Competencias competencia = leitor.readObject();
-			System.out.println(competencia);
-		}
-		leitor.close();
-	}//close competencias tester
-	
-	private void testaColaboradores() throws FileNotFoundException{
-		Parser<Colaboradores> parser = new ColaboradoresParser();
-		LeitorCSV<Colaboradores> leitor = new LeitorCSV<>("src/arquivos/colaboradores.csv", parser);
-		leitor.skipLine();
-		while(leitor.hasNext()){
-			Colaboradores colaborador = leitor.readObject();
-			System.out.println(colaborador);
-		}
-		leitor.close();
-	}//close colaboradores tester 
+	}//fecha run 
 	
 	private <V> void importarArquivo(String arquivo, V objeto, Parser parser,Vetor<V> vetor) throws FileNotFoundException {
 		LeitorCSV<V> leitor = new LeitorCSV<>(arquivo, parser);
@@ -149,8 +100,7 @@ public class Gerenciador {
 		
 		while (leitor.hasNext()) {
 			objeto = leitor.readObject();
-			System.out.println(objeto);
-			//vetor.append(objeto);
+			vetor.append(objeto);
 		}//fecha while
 		leitor.close();
 	}//fecha verArquivo

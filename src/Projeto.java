@@ -1,11 +1,16 @@
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Projeto {
+	
+	Scanner ler = new Scanner(System.in);
+	
 	private String nome;
 	private LocalDate data_inicio;
 	private LocalDate data_fim;
 	private int num_competencias;
 	private String[] competencia;
+	private int indice = 0;
 	
 	public Projeto(String nome, LocalDate data_inicio, LocalDate data_fim,
 			int num_competencias){
@@ -43,6 +48,22 @@ public class Projeto {
 				"\nFim: " + this.data_fim + "\nNúmero de competencias: " + this.num_competencias
 				+ "\nCompetencias: [ "
 				+ mostraCompetencias() + "]"+"\n----------------------------------------";
+		
+	}
+
+	public void insereCompetencias(Vetor<Competencias> vComp) {
+		
+		vComp.getVetor();
+		do{
+			System.out.println("Informe o nome da competencia: " + (this.indice+1));
+			String comp = ler.next();
+			
+				if(this.indice  < competencia.length){
+					competencia[indice] = comp;
+					indice++;
+				}//fecha if
+						
+		}while(indice < competencia.length);
 		
 	}
 	

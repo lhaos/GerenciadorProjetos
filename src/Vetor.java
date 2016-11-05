@@ -29,7 +29,7 @@ public class Vetor <V> {
 	public void getVetor(){
 		for(int i = 0; i < dados.length; i++){
 			if(dados[i] != null){
-				System.out.println("indice: " + i + "\n");
+				System.out.println(i + "º" +"\n");
 				System.out.println(dados[i]);
 			}//fecha if
 		}//fecha for
@@ -66,6 +66,16 @@ public class Vetor <V> {
 		}
 		numElements--;
 	}//fecha remove
+
+	public boolean testeIgual(String comp) {//incorreto, dps tento a correcao
+		boolean fim = false;
+		for(int i = 0; i < dados.length; i++){
+			if(dados[i].equals(comp)){
+				fim = true;
+			}
+		}
+		return fim;
+	}//fecha metodo
 	
 	
 	

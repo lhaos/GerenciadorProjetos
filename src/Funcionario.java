@@ -1,10 +1,14 @@
+import java.util.Scanner;
 
 public class Funcionario {
 
+	Scanner ler = new Scanner(System.in);
+	
 	private String[] competencia;
 	private String nome;
 	private double salario;
 	private int num_comp;
+	private int indice = 0;
 
 	public Funcionario(String nome, double salario, int num_comp) {
 		this.nome = nome;
@@ -32,6 +36,19 @@ public class Funcionario {
 		}//fecha for
 		return comp;
 	}//fecha mostraCompetencias()
+	
+public void insereCompetencias(){
+		
+		do{
+			System.out.println("Informe o nome da competencia: " + (this.indice+1));
+				
+				if(this.indice < competencia.length){
+						competencia[indice] = ler.next();
+							indice++;
+				}//fecha if
+						
+		}while(indice < competencia.length);
+}
 	
 	@Override
 	public String toString() {
