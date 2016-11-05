@@ -22,13 +22,27 @@ public class Projeto {
 		this.competencia[num] = comp;
 	}
 	
+	private String mostraCompetencias(){
+		String comp = "";
+		for(int i = 0; i < num_competencias; i++){
+			
+			if(i == (num_competencias-1)){
+				comp += this.competencia[i];
+			}else{
+				comp += this.competencia[i]+" - ";
+			}
+			
+		}//fecha for
+		return comp;
+	}//fecha mostraCompetencias()
+	
 	@Override
 	public String toString() {
 		
 		return "Projeto: " + this.nome + "\nInicio: " + this.data_inicio + 
 				"\nFim: " + this.data_fim + "\nNúmero de competencias: " + this.num_competencias
 				+ "\nCompetencias: [ "
-				+ competencia + "]";
+				+ mostraCompetencias() + "]"+"\n----------------------------------------";
 		
 	}
 	

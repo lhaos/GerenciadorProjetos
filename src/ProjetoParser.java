@@ -12,7 +12,7 @@ public class ProjetoParser implements Parser<Projeto> {
 		
 		Projeto projeto = new Projeto(nome, data_inicio, data_fim, num_competencias);
 		
-		for(int i = 0; i <= num_competencias; i++){
+		for(int i = 0; i < num_competencias; i++){
 			String v = arquivo.next();
 			projeto.setCompetencias(i,v);
 		}//fecha for
