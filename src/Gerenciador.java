@@ -15,8 +15,8 @@ public class Gerenciador {
 	
 	private void run() throws FileNotFoundException {
 		//testaFuncionarios();
-		//testaColaboradores();
-		testaCompetencias();
+		testaColaboradores();
+		//testaCompetencias();
 		//testaProjetos();
 	}
 
@@ -55,16 +55,16 @@ public class Gerenciador {
 		}
 		leitor.close();
 	}//close competencias tester
-	/**
+	
 	private void testaColaboradores() throws FileNotFoundException{
 		Parser<Colaboradores> parser = new ColaboradoresParser();
 		LeitorCSV<Colaboradores> leitor = new LeitorCSV<>("src/arquivos/colaboradores.csv", parser);
 		leitor.skipLine();
 		while(leitor.hasNext()){
-			
+			Colaboradores colaborador = leitor.readObject();
+			System.out.println(colaborador);
 		}
 		leitor.close();
 	}//close colaboradores tester 
-	**/
 
 }//close class

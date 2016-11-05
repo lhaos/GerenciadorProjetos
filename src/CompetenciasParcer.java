@@ -6,19 +6,9 @@ public class CompetenciasParcer implements Parser<Competencias> {
 	public Competencias parse(String dados) {
 		Scanner arquivo = new Scanner(dados);
 		arquivo.useDelimiter(";");
-		int num_comp = 0;
+		String comp = arquivo.next();
 		
-		while(arquivo.hasNext()){
-			num_comp++;
-			System.out.println("teste");
-		}
-		
-		Competencias competencias = new Competencias(num_comp);
-		
-		for(int i = 0; i < num_comp; i++){
-			String v = arquivo.next();
-			competencias.setCompetencias(i,v);
-		}
+		Competencias competencias = new Competencias(comp);
 		
 		arquivo.close();
 		return competencias;
