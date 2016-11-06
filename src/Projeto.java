@@ -8,6 +8,7 @@ public class Projeto {
 	private String nome;
 	private LocalDate data_inicio;
 	private LocalDate data_fim;
+	private LocalDate hoje = LocalDate.now();
 	private int num_competencias;
 	private String[] competencia;
 	private int indice = 0;
@@ -40,16 +41,6 @@ public class Projeto {
 		}//fecha for
 		return comp;
 	}//fecha mostraCompetencias()
-	
-	@Override
-	public String toString() {
-		
-		return "Projeto: " + this.nome + "\nInicio: " + this.data_inicio + 
-				"\nFim: " + this.data_fim + "\nNúmero de competencias: " + this.num_competencias
-				+ "\nCompetencias: [ "
-				+ mostraCompetencias() + "]"+"\n----------------------------------------";
-		
-	}
 
 	public void insereCompetencias(Vetor<Competencias> vComp) {
 		
@@ -65,6 +56,19 @@ public class Projeto {
 						
 		}while(indice < competencia.length);
 		
-	}
+	}//fecha insereCompetencias
 	
-}
+	@Override
+	public String toString() {
+		
+		if((this.data_inicio.isEqual(this.hoje) || this.data_inicio.isBefore(this.hoje)) && this.data_fim.isAfter(this.hoje)){
+			return "Projeto: " + this.nome + "\nInicio: " + this.data_inicio + 
+					"\nFim: " + this.data_fim + "\nNúmero de competencias: " + this.num_competencias
+					+ "\nCompetencias: [ "
+					+ mostraCompetencias() + "]"+"\n----------------------------------------";
+		}
+		return "";
+		
+	}//fecha toString
+	
+}//fecha class
