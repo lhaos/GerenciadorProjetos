@@ -13,11 +13,11 @@ public class Cadastros {
 			return ler.next();
 	}//fecha digita
 	
-	public Object cadastroFunc(){//incompleto
+	public Funcionario cadastroFunc(Vetor<Competencias> vComp){
 		Funcionario func = new Funcionario(digita("Digite o nome do funcionario: "), 
 				Double.parseDouble(digita("Digite o salario do funcionario: ")),
 				Integer.parseInt(digita("Informe o numero de competencias")));
-		func.insereCompetencias();
+		func.insereCompetencias(vComp);
 		
 		return func;
 		
@@ -32,7 +32,13 @@ public class Cadastros {
 		proj.insereCompetencias(vComp);
 		
 		return proj;
-	}
+	}//fecha cadastro de projeto
+
+	public Competencias cadastroComp() {
+		Competencias comp = new Competencias(digita("Digite o nome da competencia"));
+		return comp;
+	}//fecha cadastro de competencias
+	
 	
 	
 	

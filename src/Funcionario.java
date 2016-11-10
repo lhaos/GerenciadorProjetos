@@ -37,8 +37,9 @@ public class Funcionario {
 		return comp;
 	}//fecha mostraCompetencias()
 	
-public void insereCompetencias(){
+	public void insereCompetencias(Vetor<Competencias> vComp){
 		
+		vComp.getVetor();
 		do{
 			System.out.println("Informe o nome da competencia: " + (this.indice+1));
 				
@@ -48,7 +49,7 @@ public void insereCompetencias(){
 				}//fecha if
 						
 		}while(indice < competencia.length);
-}
+	}//fecha insereCompetencias
 	
 	@Override
 	public String toString() {
@@ -56,6 +57,6 @@ public void insereCompetencias(){
 		return "Funcionario: "+this.nome+"\nSalario: "+this.salario+"\nCompetencias: ["
 		+mostraCompetencias()+" ]"+"\n------------------------------------------------";
 		
-	}
+	}//fecha toString
 
 }//close class

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Gerenciador {
 	
 	Cadastros cad = new Cadastros();
+	Remocoes rem = new Remocoes();
 	
 	FuncionariosParser pFunc = new FuncionariosParser();
 	CompetenciasParcer pComp = new CompetenciasParcer();
@@ -46,21 +47,28 @@ public class Gerenciador {
 		Opcao verColab = new Opcao("Ver Colaboradores");
 		Opcao deletFunc = new Opcao("Deletar Funcionarios");
 		Opcao deletProj = new Opcao("Deletar Projetos");
+		Opcao cadProj = new Opcao("Cadastrar Projeto");
 		Opcao cadFunc = new Opcao("Cadastrar Funcionario");
+		Opcao cadComp = new Opcao("Cadastrar competencias");
 		Opcao sair = new Opcao("Sair");
 
+		menu.addOption(sair);
 		menu.addOption(verFunc);
 		menu.addOption(verProj);
 		menu.addOption(verComp);
 		menu.addOption(verColab);
 		menu.addOption(deletFunc);
 		menu.addOption(deletProj);
+		menu.addOption(cadProj);
 		menu.addOption(cadFunc);
-		menu.addOption(sair);
+		menu.addOption(cadComp);
 		
 		do {
 			menu.show();
 		switch (menu.getOption()) {
+			case 0:
+					System.exit(0);
+				break;
 			case 1:
 					System.out.println("\nRelação de Funcionários:\n");
 					vFunc.getVetor();
@@ -78,18 +86,22 @@ public class Gerenciador {
 					vCol.getVetor();
 				break;
 			case 5:
-					//VetorFuncionarios.remove(Integer.parseInt(digita("Digite um indice do funcionario "
-						//+ "que deseja remover")));
+				rem.removeFunc(vFunc);
 				break;
 			case 6:
-				//vetorProjetos.remove(Integer.parseInt(digita("Digite um indice do projeto "
-					//+ "que deseja remover")));
+				rem.removeProj(vProj);
 			break;
 			case 7:
 				 vProj.append(cad.cadastroProj(vComp));
 			break;	
+			case 8:
+				 vFunc.append(cad.cadastroFunc(vComp));
+			break;	
+			case 9:
+					vComp.append(cad.cadastroComp());
+				break;
 			default:
-				System.exit(0);
+				System.out.println("\nOpção inválida");
 			}//fecha switch
 		} while (true);
 		

@@ -16,7 +16,7 @@ public class Menu {
 
 	public void show() {		
 		for (int i = 0; i < numOpcoes; i++) {
-			System.out.println("["+ i+1 + "] "+opcoes[i].getTexto());
+			System.out.println("["+ i + "] "+opcoes[i].getTexto());
 		}
 		System.out.println("ESCOLHA UMA OPÇÃO: ");
 		this.escolha = this.resp.nextInt();
